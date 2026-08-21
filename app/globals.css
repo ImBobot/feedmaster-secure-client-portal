@@ -1,0 +1,444 @@
+  :root{
+    /* ===== Risograph ink tokens ===== */
+    --paper:      #F1EAD6;   /* uncoated kraft/cream paper */
+    --paper-2:    #E9E0C8;   /* slightly deeper paper for panels */
+    --ink:        #211C16;   /* soft riso black, warm not pure black */
+    --riso-red:   #D6401F;   /* riso "flame red" */
+    --riso-blue:  #1B4B91;   /* riso "blue" */
+    --riso-yellow:#F0B429;   /* riso "yellow", used sparingly */
+    --overprint:  #7A3A6A;   /* red+blue multiply overlap illusion */
+    --line: 3px;
+
+    --font-display: "Archivo Black", "Arial Black", sans-serif;
+    --font-body: "Instrument Sans", system-ui, sans-serif;
+    --font-mono: "Space Mono", ui-monospace, monospace;
+
+    --space-1: clamp(.5rem, .4rem + .5vw, .75rem);
+    --space-2: clamp(1rem, .8rem + 1vw, 1.5rem);
+    --space-3: clamp(1.75rem, 1.4rem + 1.8vw, 2.75rem);
+    --space-4: clamp(3rem, 2.2rem + 4vw, 5.5rem);
+  }
+
+  *,*::before,*::after{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img,svg{ display:block; max-width:100%; }
+  a{ color: inherit; }
+
+  /* ===== paper grain overlay (authentic riso texture) ===== */
+  .grain{
+    position: fixed; inset: 0;
+    pointer-events: none;
+    opacity: .06;
+    mix-blend-mode: multiply;
+    z-index: 999;
+  }
+
+  /* ===== halftone dot fills, used instead of flat shadows ===== */
+  .halftone{
+    background-image: radial-gradient(var(--ink) 1px, transparent 1.3px);
+    background-size: 7px 7px;
+    opacity: .5;
+  }
+  .halftone--red{
+    background-image: radial-gradient(var(--riso-red) 1.1px, transparent 1.4px);
+    background-size: 6px 6px;
+  }
+  .halftone--blue{
+    background-image: radial-gradient(var(--riso-blue) 1.1px, transparent 1.4px);
+    background-size: 6px 6px;
+  }
+
+  .wrap{ max-width: 1120px; margin: 0 auto; padding-inline: var(--space-2); }
+
+  /* ===== focus ring, always visible, riso-styled ===== */
+  a:focus-visible, button:focus-visible, input:focus-visible{
+    outline: 3px solid var(--riso-blue);
+    outline-offset: 3px;
+  }
+
+  /* =========================================================
+     HEADER
+  ========================================================= */
+  .site-header{
+    position: sticky; top: 0; z-index: 50;
+    background: var(--paper);
+    border-bottom: var(--line) solid var(--ink);
+  }
+  .site-header .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-block: var(--space-1);
+  }
+  .brand{
+    font-family: var(--font-mono);
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-decoration:none;
+    font-size: .95rem;
+    display:flex; align-items:center; gap:.5em;
+  }
+  .brand::before{
+    content:"";
+    width: 12px; height: 12px;
+    background: var(--riso-red);
+    border-radius: 50%;
+    box-shadow: 4px 0 0 var(--riso-blue);
+  }
+  .header-cta{
+    font-family: var(--font-mono);
+    font-size: .8rem;
+    font-weight: 700;
+    text-decoration: none;
+    border: 2px solid var(--ink);
+    padding: .5em .9em;
+    background: var(--ink);
+    color: var(--paper);
+    letter-spacing: .03em;
+  }
+  .header-cta:hover{ background: var(--riso-red); border-color: var(--riso-red); color:#fff; }
+
+  /* =========================================================
+     HERO — signature misregistration headline
+  ========================================================= */
+  .hero{
+    position: relative;
+    padding-block: var(--space-4) var(--space-3);
+    overflow: clip;
+  }
+  .hero .wrap{ position: relative; }
+
+  .eyebrow-row{
+    display:flex; align-items:center; gap: var(--space-2);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-2);
+  }
+  .stamp{
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: .75rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    border: 2px solid var(--ink);
+    padding: .45em .8em;
+    transform: rotate(-3deg);
+    display:inline-block;
+    background: var(--paper);
+  }
+  .stamp--fill{
+    background: var(--riso-yellow);
+    border-color: var(--ink);
+  }
+
+  .headline-stack{
+    position: relative;
+    margin: 0 0 var(--space-2);
+    font-family: var(--font-display);
+    font-weight: 400; /* Archivo Black is already black weight */
+    text-transform: uppercase;
+    line-height: .96;
+    font-size: clamp(2.4rem, 1.6rem + 5.2vw, 5.4rem);
+    letter-spacing: -.01em;
+  }
+  /* misregistration: two offset copies in ink colors under the black main copy */
+  .headline-stack span{
+    display:block;
+  }
+  .headline-stack .layer{
+    position:absolute; inset:0;
+    color: transparent;
+    -webkit-text-stroke: 0;
+  }
+  .headline-stack .layer-red{
+    color: var(--riso-red);
+    transform: translate(6px, 5px);
+    mix-blend-mode: multiply;
+    z-index: 0;
+  }
+  .headline-stack .layer-blue{
+    color: var(--riso-blue);
+    transform: translate(-5px, -4px);
+    mix-blend-mode: multiply;
+    z-index: 0;
+  }
+  .headline-stack .layer-main{
+    position: relative;
+    color: var(--ink);
+    z-index: 1;
+  }
+
+  .hero-sub{
+    max-width: 42ch;
+    font-size: clamp(1.05rem, 1rem + .3vw, 1.25rem);
+    margin: 0 0 var(--space-3);
+  }
+  .hero-sub strong{ background: var(--riso-yellow); padding: 0 .15em; }
+
+  .hero-actions{ display:flex; gap: var(--space-2); flex-wrap: wrap; align-items:center; }
+
+  .btn{
+    font-family: var(--font-mono);
+    font-weight: 700;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+    font-size: .95rem;
+    border: var(--line) solid var(--ink);
+    padding: .85em 1.6em;
+    background: var(--riso-red);
+    color: #fff;
+    cursor:pointer;
+    text-decoration:none;
+    display:inline-block;
+    box-shadow: 6px 6px 0 var(--ink);
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .btn:hover{ transform: translate(-2px,-2px); box-shadow: 8px 8px 0 var(--ink); }
+  .btn:active{ transform: translate(1px,1px); box-shadow: 3px 3px 0 var(--ink); }
+  .btn-ghost{
+    background: transparent;
+    color: var(--ink);
+    box-shadow: 6px 6px 0 var(--riso-blue);
+  }
+  .btn-ghost:hover{ background: var(--paper-2); }
+
+  @media (prefers-reduced-motion: reduce){
+    .btn{ transition: none; }
+    .btn:hover, .btn:active{ transform:none; }
+  }
+
+  /* stray riso shapes floating in hero, decorative only */
+  .riso-blob{
+    position:absolute;
+    border-radius: 50%;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+  }
+
+  /* =========================================================
+     TORN DIVIDER — print-edge break between sections
+  ========================================================= */
+  .torn{
+    height: 22px;
+    background: var(--ink);
+    clip-path: polygon(0% 0%,3% 100%,7% 10%,11% 90%,15% 5%,19% 100%,23% 15%,27% 95%,31% 0%,35% 100%,39% 10%,43% 90%,47% 5%,51% 100%,55% 15%,59% 95%,63% 0%,67% 100%,71% 10%,75% 90%,79% 5%,83% 100%,87% 15%,91% 95%,95% 0%,100% 100%,100% 100%,0% 100%);
+  }
+
+  /* =========================================================
+     "WHAT'S INSIDE" — card grid, thick borders, halftone corner
+  ========================================================= */
+  .section{ padding-block: var(--space-4); }
+  .section-head{ margin-bottom: var(--space-3); max-width: 56ch; }
+  .section-label{
+    font-family: var(--font-mono);
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--riso-blue);
+    display:block;
+    margin-bottom: var(--space-1);
+  }
+  .section-title{
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-size: clamp(1.6rem, 1.3rem + 1.6vw, 2.4rem);
+    line-height: 1.05;
+    margin: 0;
+  }
+
+  .card-grid{
+    display:grid;
+    gap: var(--space-2);
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (max-width: 800px){ .card-grid{ grid-template-columns: 1fr; } }
+
+  .card{
+    position:relative;
+    border: var(--line) solid var(--ink);
+    background: var(--paper);
+    padding: var(--space-2);
+    min-height: 100%;
+  }
+  .card::before{
+    content:"";
+    position:absolute; top:-10px; right:-10px;
+    width: 46px; height: 46px;
+    z-index: -1;
+  }
+  .card:nth-child(1)::before{ background-image: radial-gradient(var(--riso-red) 1.1px, transparent 1.4px); background-size:6px 6px; }
+  .card:nth-child(2)::before{ background-image: radial-gradient(var(--riso-yellow) 1.4px, transparent 1.6px); background-size:6px 6px; }
+  .card:nth-child(3)::before{ background-image: radial-gradient(var(--riso-blue) 1.1px, transparent 1.4px); background-size:6px 6px; }
+
+  .card-num{
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: .8rem;
+    color: var(--riso-red);
+    display:block;
+    margin-bottom: var(--space-1);
+  }
+  .card h3{
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-size: 1.15rem;
+    margin: 0 0 .5em;
+    line-height: 1.15;
+  }
+  .card p{ margin:0; font-size: .95rem; }
+
+  /* =========================================================
+     CREDIBILITY STRIP
+  ========================================================= */
+  .credibility{
+    border-top: var(--line) solid var(--ink);
+    border-bottom: var(--line) solid var(--ink);
+    padding-block: var(--space-3);
+    background: var(--paper-2);
+  }
+  .credibility .wrap{
+    display:flex; gap: var(--space-3); flex-wrap: wrap; align-items:flex-start;
+  }
+  .credibility-mark{
+    font-family: var(--font-mono);
+    font-size: .8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--riso-blue);
+    white-space: nowrap;
+  }
+  .credibility p{
+    margin:0; max-width: 62ch; font-size: 1.02rem;
+  }
+
+  /* =========================================================
+     FORM / GATE
+  ========================================================= */
+  .gate{
+    padding-block: var(--space-4);
+  }
+  .gate-panel{
+    position: relative;
+    border: var(--line) solid var(--ink);
+    background: var(--paper);
+    box-shadow: 10px 10px 0 var(--overprint);
+    padding: var(--space-3);
+    max-width: 640px;
+    margin-inline: auto;
+  }
+  .gate-panel::after{
+    content:"";
+    position:absolute; inset:10px;
+    border: 1px dashed var(--ink);
+    opacity:.35;
+    pointer-events:none;
+  }
+  .gate-title{
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.1rem);
+    line-height: 1.05;
+    margin: 0 0 .4em;
+    text-align:center;
+  }
+  .gate-sub{
+    text-align:center;
+    margin: 0 0 var(--space-3);
+    color: #4a4235;
+  }
+
+  .field{ margin-bottom: var(--space-2); }
+  .field label{
+    display:block;
+    font-family: var(--font-mono);
+    font-size: .78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    margin-bottom: .4em;
+  }
+  .field input{
+    width: 100%;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    padding: .8em .9em;
+    border: 2px solid var(--ink);
+    background: #fff;
+    color: var(--ink);
+  }
+  .field input::placeholder{ color: #9a8f79; }
+  .field-hint{ font-size: .8rem; color:#6b6151; margin-top: .35em; }
+
+  /* honeypot, hidden from real users, visible to bots */
+  .hp{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+
+  .gate-submit{
+    width:100%;
+    display:block;
+    text-align:center;
+    box-shadow: 5px 5px 0 var(--ink);
+  }
+  .gate-submit:hover{ box-shadow: 7px 7px 0 var(--ink); }
+  .gate-submit[disabled]{
+    opacity:.6; cursor:not-allowed; box-shadow: 5px 5px 0 var(--ink); transform:none;
+  }
+
+  .gate-note{
+    text-align:center;
+    font-family: var(--font-mono);
+    font-size: .75rem;
+    color:#6b6151;
+    margin-top: var(--space-2);
+  }
+
+  .status{
+    margin-top: var(--space-2);
+    font-size: .92rem;
+    font-family: var(--font-mono);
+    text-align:center;
+  }
+  .status[data-state="error"]{ color: var(--riso-red); }
+  .status[data-state="success"]{ color: var(--riso-blue); }
+
+  /* success state swap */
+  .success-block{ display:none; text-align:center; }
+  .success-block.is-visible{ display:block; }
+  .form-block.is-hidden{ display:none; }
+  .success-stamp{
+    display:inline-block;
+    font-family: var(--font-mono);
+    font-weight:700;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    border: 3px solid var(--riso-blue);
+    color: var(--riso-blue);
+    padding: .3em .8em;
+    transform: rotate(-4deg);
+    margin-bottom: var(--space-2);
+  }
+  .download-btn{ background: var(--riso-blue); box-shadow: 6px 6px 0 var(--ink); }
+  .download-btn:hover{ box-shadow: 8px 8px 0 var(--ink); }
+
+  /* =========================================================
+     FOOTER
+  ========================================================= */
+  .site-footer{
+    border-top: var(--line) solid var(--ink);
+    padding-block: var(--space-3);
+  }
+  .site-footer .wrap{
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap: wrap; gap: var(--space-1);
+    font-family: var(--font-mono);
+    font-size: .78rem;
+    color:#6b6151;
+  }
