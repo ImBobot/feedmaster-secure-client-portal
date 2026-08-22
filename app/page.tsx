@@ -7,7 +7,7 @@ import { useState, FormEvent } from 'react';
 // Since the API route lives in this same repo, this can just
 // be a relative path once both are deployed together.
 // =========================================================
-const EBOOK_DOWNLOAD_URL = 'https://your-storage-or-cdn-link/tamang-timpla-starter-guide.pdf';
+const EBOOK_DOWNLOAD_URL = 'https://drive.google.com/file/d/1AMXdVVbVV_qyh6jKS8MTeHaC86DYschw/view?usp=drive_link';
 
 type FormState = 'idle' | 'submitting' | 'success' | 'error';
 
