@@ -114,8 +114,7 @@ export default function Home() {
             </h1>
 
             <p className="hero-sub">
-              Kunin ang <strong>FREE starter guide</strong> ng Feed Master PH — Guide mo sa pagtimpla ng
-              sariling feed, para makatipid at magsimula nang tama sa unang araw.
+              Kunin ang <strong>FREE starter guide</strong> simpleng paraan paano maka angat sa pagiging backyard grower to medium or beyond. Depende na yan sayo imagination mo ang limit.
             </p>
 
             <div className="hero-actions">
@@ -138,18 +137,18 @@ export default function Home() {
             <div className="card-grid">
               <div className="card">
                 <span className="card-num">01</span>
-                <h3>Batayang Feed Formula</h3>
-                <p>Simpleng starting-point formulation na pwede mong i-adjust base sa available na sangkap sa inyo.</p>
+                <h3>It all started with a DREAM</h3>
+                <p>Simpleng starting-point query: "Tamang mindset"</p>
               </div>
               <div className="card">
                 <span className="card-num">02</span>
-                <h3>Saan Manggagaling ang Sangkap</h3>
-                <p>Listahan ng mga karaniwang lokal na ingredient at kung paano tignan kung maganda ang kalidad.</p>
+                <h3>Gaano ka IMPORTANTE ang FEED FORMULATION</h3>
+                <p>Feeds is 70% of the cost sa pag aalaga ng hayop</p>
               </div>
               <div className="card">
                 <span className="card-num">03</span>
-                <h3>Simpleng Cost Checklist</h3>
-                <p>Gabay sa pagtantiya ng gastos kada kilo, para malinaw agad kung tama ang iyong timpla.</p>
+                <h3>2 IS BETTER than 1</h3>
+                <p>Association of backyard farmers, Community support and knowledge sharing, Kooperatiba</p>
               </div>
             </div>
           </div>
