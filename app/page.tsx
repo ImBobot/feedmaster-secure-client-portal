@@ -103,7 +103,7 @@ export default function Home() {
 
           <div className="wrap">
             <div className="eyebrow-row">
-              <span className="stamp stamp--fill">100% Libre</span>
+              <span className="stamp stamp--fill">100% FREE</span>
               <span className="stamp">Para sa Backyard Farmers</span>
             </div>
 
@@ -114,12 +114,12 @@ export default function Home() {
             </h1>
 
             <p className="hero-sub">
-              Kunin ang <strong>libreng starter guide</strong> ng Feed Master PH — batayang gabay sa pagtimpla ng
+              Kunin ang <strong>FREE starter guide</strong> ng Feed Master PH — Guide mo sa pagtimpla ng
               sariling feed, para makatipid at magsimula nang tama sa unang araw.
             </p>
 
             <div className="hero-actions">
-              <a href="#gate" className="btn">I-download nang libre</a>
+              <a href="#gate" className="btn">I-download nang FREE</a>
               <a href="#inside" className="btn btn-ghost">Ano ang laman</a>
             </div>
           </div>
@@ -161,7 +161,7 @@ export default function Home() {
             <span className="credibility-mark">Sino si Feed Master PH</span>
             <p>
               Ginawa ng Licensed Professional Agriculturist na may background sa feed formulation at agricultural
-              research — para may batayan ang bawat payo, hindi basta chismis sa grupo.
+              research — para may batayan ang bawat payo, hindi basta chismis sa grupo. 
             </p>
           </div>
         </section>
@@ -253,7 +253,7 @@ export default function Home() {
 
       <footer className="site-footer">
         <div className="wrap">
-          <span>Feed Master PH · Tamang timpla, tiyak na kita</span>
+          <span>Feed Master PH · Sa tamang timpla, tiyak na kita</span>
           <span>&copy; {new Date().getFullYear()}</span>
         </div>
       </footer>
